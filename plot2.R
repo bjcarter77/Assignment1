@@ -1,0 +1,7 @@
+setwd("C:/Users/Brad/Documents/coursera eda/assignment_1")
+household_power_consumption <- read.csv("household_power_consumption.txt", sep=";", na.strings="?", stringsAsFactors=FALSE)
+sub_dates <- subset(household_power_consumption, subset = Date %in% c("1/2/2007", "2/2/2007"))
+png(file = "plot2.png")
+sub_dates$x <- strptime(paste(sub_dates$Date, sub_dates$Time), "%d/%m/%Y %H:%M:%S")
+plot(sub_dates$x, sub_dates$Global_active_power, ylab = "Global Active Power (kilowatts)", xlab = "", type = "l")
+dev.off()
